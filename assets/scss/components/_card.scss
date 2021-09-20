@@ -1,0 +1,23 @@
+@import "../vendor/variables";
+
+.el-card {
+  padding: 10px;
+  border-radius: 17px;
+  background-color: $light;
+
+  &.el-card--red {
+    background-color: $red-lighter;
+  }
+  &.el-card--blue {
+    background-color: $blue-lighter;
+  }
+  &.el-card--green {
+    background-color: $green-lighter;
+  }
+  &.el-card--indigo {
+    background-color: $indigo-lighter;
+  }
+  &.el-card--army {
+    background-color: $blue-lighter;
+  }
+}

@@ -1,0 +1,22 @@
+@import "../vendor/variables";
+
+.el-button {
+  padding: 10px 18px;
+  border-radius: 100px;
+  transition: all .2s ease-in-out;
+  margin: .5rem;
+
+  &:hover {
+    box-shadow: 0px 8px 32px rgba(102, 107, 226, 0.35);
+  }
+
+  &.el-button__primary {
+    background-color: $green;
+    color: $light;
+  }
+
+  &.el-button__secondary {
+    background-color: $light-gray;
+    color: $dark;
+  }
+}
