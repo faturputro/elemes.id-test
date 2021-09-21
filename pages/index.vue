@@ -45,16 +45,70 @@
     <section class="h-screen py-10">
       <div class="container mx-auto">
         <div class="py-8">
-          <h2 class="text-5xl font-medium text-dark mb-4">Browse Our Category</h2>
-          <h2 class="text-5xl font-medium text-primary">Receipt</h2>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-medium text-dark mb-4">Browse Our Category</h2>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-medium text-primary">Receipt</h2>
         </div>
-        <el-card
-          v-for="(cat, i) in categories"
-          :key="`category-${i}`"
-          :color="cat.color"
-        >
-          {{ cat.title }}
-        </el-card>
+        <div ref="carouselContainer" class="mt-12 flex transition-all duration-300 ease-in-out">
+          <el-card
+            v-for="(cat, i) in categories"
+            :key="`category-${i}`"
+            :color="cardColor(cat.title)"
+            :elevated="true"
+          >
+            <div class="w-64 h-48 relative p-6">
+              <div class="">
+                <div class="w-16 mx-auto mb-4">
+                  <img :src="cat.src" :alt="cat.title">
+                </div>
+                <h6 class="text-dark text-lg text-center font-medium block">{{ cat.title }}</h6>
+                <p class="text-center">{{ cat.total }} Items</p>
+              </div>
+            </div>
+          </el-card>
+        </div>
+        <div class="flex justify-end mt-4">
+          <el-button
+            color="primary"
+            :disabled="disablePrev"
+            @click="controlCarousel(true)"
+          >
+            <span class="uppercase tracking-wider">Prev</span>
+          </el-button>
+          <el-button
+            color="primary"
+            :disabled="isNextDisabled"
+            @click="controlCarousel(false)"
+          >
+            <span class="uppercase tracking-wider">Next</span>
+          </el-button>
+        </div>
+      </div>
+    </section>
+    <section class="h-screen py-10">
+      <div class="container mx-auto">
+        <div class="py-8">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-medium text-dark mb-4">Browse Our Trending</h2>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-medium text-primary">Receipt</h2>
+        </div>
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+          <el-card
+            v-for="(item, i) in trends"
+            :key="`trend-${i}`"
+            :color="cardColor(item.category)"
+            :elevated="true"
+          >
+            <div class="relative p-6">
+              <div class="w-1/2 mb-4">
+                <img :src="item.src" :alt="`${item.title} - ${item.category}`">
+              </div>
+              <h4 class="text-3xl text-dark font-semibold mb-2">{{ item.title }}</h4>
+              <h6 class="text-primary font-medium">{{ item.category }}</h6>
+            </div>
+          </el-card>
+        </div>
+      </div>
+      <div class="w-full text-center">
+        <el-button color="primary">All Receipt</el-button>
       </div>
     </section>
   </div>
@@ -66,47 +120,173 @@ export default {
     return {
       categories: [
         {
-          src: '',
-          title: 'Pizza',
-          total: 20,
-          color: 'green',
+          src: require('@/assets/images/cupcake.svg'),
+          title: 'Cupcake',
+          total: 22,
         },
         {
-          src: '',
+          src: require('@/assets/images/pizza.svg'),
           title: 'Pizza',
-          total: 20,
-          color: 'blue',
+          total: 25,
         },
         {
-          src: '',
-          title: 'Pizza',
-          total: 20,
-          color: 'red',
+          src: require('@/assets/images/kebab.svg'),
+          title: 'Kebab',
+          total: 12,
         },
         {
-          src: '',
-          title: 'Pizza',
-          total: 20,
-          color: 'army',
+          src: require('@/assets/images/salmon.svg'),
+          title: 'Salmon',
+          total: 22,
         },
         {
-          src: '',
-          title: 'Pizza',
-          total: 20,
-          color: 'indigo',
-        },
-        {
-          src: '',
-          title: 'Pizza',
+          src: require('@/assets/images/doughnut.svg'),
+          title: 'Doughnut',
           total: 20,
         },
         {
-          src: '',
+          src: require('@/assets/images/cupcake.svg'),
+          title: 'Cupcake',
+          total: 22,
+        },
+        {
+          src: require('@/assets/images/pizza.svg'),
           title: 'Pizza',
+          total: 25,
+        },
+        {
+          src: require('@/assets/images/kebab.svg'),
+          title: 'Kebab',
+          total: 12,
+        },
+        {
+          src: require('@/assets/images/salmon.svg'),
+          title: 'Salmon',
+          total: 22,
+        },
+        {
+          src: require('@/assets/images/doughnut.svg'),
+          title: 'Doughnut',
+          total: 20,
+        },
+        {
+          src: require('@/assets/images/cupcake.svg'),
+          title: 'Cupcake',
+          total: 22,
+        },
+        {
+          src: require('@/assets/images/pizza.svg'),
+          title: 'Pizza',
+          total: 25,
+        },
+        {
+          src: require('@/assets/images/kebab.svg'),
+          title: 'Kebab',
+          total: 12,
+        },
+        {
+          src: require('@/assets/images/salmon.svg'),
+          title: 'Salmon',
+          total: 22,
+        },
+        {
+          src: require('@/assets/images/doughnut.svg'),
+          title: 'Doughnut',
           total: 20,
         },
       ],
+      carouselOffset: 0,
+      isPrevDisabled: false,
+      trends: [
+        {
+          title: 'Pizza Pepperoni',
+          category: 'Pizza',
+          src: require('@/assets/images/pexels-brett-jordan-8425191.png'),
+        },
+        {
+          title: 'Pizza Meat',
+          category: 'Pizza',
+          src: require('@/assets/images/pexels-daria-shevtsova-12609681.png'),
+        },
+        {
+          title: 'Doner Kebab',
+          category: 'Kebab',
+          src: require('@/assets/images/pexels-nishant-aneja-29558191.png'),
+        },
+        {
+          title: 'Salmon Roll',
+          category: 'Salmon',
+          src: require('@/assets/images/pexels-olga-lioncat-72454641.png'),
+        },
+        {
+          title: 'Cupcake Choco',
+          category: 'Cupcake',
+          src: require('@/assets/images/pexels-oleg-magni-19086741.png'),
+        },
+        {
+          title: 'Doughnut Milk',
+          category: 'Doughnut',
+          src: require('@/assets/images/pexels-alena-shekhovtcova-69409781.png'),
+        },
+        {
+          title: 'Doughnut Unicorn',
+          category: 'Doughnut',
+          src: require('@/assets/images/pexels-karley-saagi-20644491.png'),
+        },
+        {
+          title: 'Kathi Kebab',
+          category: 'Kebab',
+          src: require('@/assets/images/pexels-polina-tankilevitch-6419736 1.png'),
+        },
+      ],
     };
+  },
+  head: {
+    title: 'Elemes.id Test by Faturachman Dwi Putro',
+  },
+  computed: {
+    disablePrev() {
+      return this.carouselOffset === 0;
+    },
+  },
+  methods: {
+    controlCarousel(isNext) {
+      const el = this.$refs.carouselContainer;
+      const {0: item} = el.children;
+      const cardWidth = parseFloat(this.computedStyle(item).marginLeft) +
+        parseFloat(this.computedStyle(item).marginRight) +
+        item.getBoundingClientRect().width;
+      if (isNext) {
+        this.carouselOffset += cardWidth;
+      } else {
+        this.carouselOffset -= cardWidth;
+      }
+      el.style.transform = `translateX(${this.carouselOffset}px)`;
+
+      const els = el.children;
+      const lastItem = els[els.length - 1];
+      this.isNextDisabled = lastItem.getBoundingClientRect().right <= window.innerWidth;
+
+    },
+    computedStyle(el) {
+      return window.getComputedStyle(el);
+    },
+    cardColor(category) {
+      switch (category.toLowerCase()) {
+        case 'kebab':
+          return 'indigo';
+        case 'pizza':
+          return 'blue';
+        case 'salmon':
+          return 'red';
+        case 'cupcake':
+          return 'green';
+        case 'doughnut':
+          return 'army';
+        default:
+          return null;
+      }
+    },
   },
 }
 </script>

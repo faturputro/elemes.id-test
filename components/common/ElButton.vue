@@ -2,7 +2,7 @@
   <button
     type="button"
     class="el-button"
-    :class="[ buttonType ]"
+    :class="[ buttonType, isDisabled ]"
     @click="emitEvent"
   >
     <slot></slot>
@@ -36,10 +36,15 @@ export default {
           return 'el-button__default';
       }
     },
+    isDisabled() {
+      return this.disabled && 'is-disabled';
+    },
   },
   methods: {
     emitEvent() {
-      this.$emit('click');
+      if (!this.disabled) {
+        this.$emit('click');
+      }
     },
   },
 };

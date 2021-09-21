@@ -3,6 +3,7 @@
     class="el-card"
     :class="[cardColor, elevated && 'el-card--elevation' ]"
   >
+    <div v-if="elevated" class="el-card--overlay"></div>
     <slot></slot>
   </div>
 </template>
