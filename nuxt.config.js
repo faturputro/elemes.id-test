@@ -35,8 +35,9 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    'nuxt-purgecss',
     // https://go.nuxtjs.dev/tailwindcss
+    '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
   ],
 
@@ -50,6 +51,15 @@ export default {
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+  build: {},
+
+  fontawesome: {
+    icons: {
+      regular: [
+        '',
+      ],
+    },
+  },
+
+  purgeCSS: {}
 }

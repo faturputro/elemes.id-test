@@ -18,7 +18,9 @@
       </li>
       <li class="mx-4">
         <nuxt-link to="/">
-          Promotions
+          <el-badge content="HOT">
+            Promotions
+          </el-badge>
         </nuxt-link>
       </li>
       <li class="mx-4">

@@ -35,3 +35,34 @@
     min-width: 300px;
   }
 }
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .jumbotron-container {
+    height: 30vh;
+    width: 30vh;
+    padding: 1.4rem;
+    left: -20vw;
+
+    .jumbotron-review__card {
+      min-width: 300px;
+    }
+  }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .jumbotron-container {
+    height: 36vh;
+    width: 36vh;
+    padding: 1.8rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .jumbotron-container {
+    height: 40vh;
+    width: 40vh;
+
+    .jumbotron-review__card {
+      min-width: 300px;
+    }
+  }
+}

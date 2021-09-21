@@ -1,13 +1,13 @@
 <template>
   <div>
     <section id="s-jumbotron" class="flex items-center h-screen">
-      <div class="container mx-auto flex items-center justify-between z-20">
-        <div class="w-1/3 mr-12">
+      <div class="container mx-auto flex items-center justify-between flex-col-reverse lg:flex-row xl:flex-row z-20">
+        <div class="w-11/12 lg:w-1/3 xl:w-1/3 lg:mr-12 xl:mr-12">
           <h1 class="font-medium text-primary mb-10 text-5xl lg:text-6xl xl:text-6xl">
             Good Food Us <br>
             Good Mood
           </h1>
-          <p class="text-gray-500 text-lg">
+          <p class="text-gray-500 text-base lg:text-lg xl:text-lg">
             I would think that conserving our natural resources
             should be a conservative position: Not to waste food,
             and not to throw away a lot of the food that we buy.
@@ -32,7 +32,7 @@
                   <img src="@/assets/images/Food-Plate.png" alt="Good Food = Good Mood">
                 </div>
                 <div>
-                  <h6 class="text-dark font-medium">Green Salad Tomato</h6>
+                  <h6 class="text-dark font-medium text-sm lg:text-base xl:text-base">Green Salad Tomato</h6>
                   <small class="text-gray-400 tracking-wide">Tomato</small>
                 </div>
               </div>
@@ -43,8 +43,8 @@
       <div class="s-jumbotron-overlay"></div>
     </section>
     <section class="h-screen py-10">
-      <div class="container mx-auto">
-        <div class="py-8">
+      <div class="container mx-auto overflow-scroll sm:overflow-scroll md:overflow-scroll lg:overflow-visible xl:overflow-visible">
+        <div class="py-8 px-6 md:px-4 lg:px-0 xl:px-0">
           <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-medium text-dark mb-4">Browse Our Category</h2>
           <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-medium text-primary">Receipt</h2>
         </div>
@@ -66,7 +66,7 @@
             </div>
           </el-card>
         </div>
-        <div class="flex justify-end mt-4">
+        <div class="hidden lg:flex xl:flex justify-end mt-4">
           <el-button
             color="primary"
             :disabled="disablePrev"
@@ -86,28 +86,32 @@
     </section>
     <section class="h-screen py-10">
       <div class="container mx-auto">
-        <div class="py-8">
+        <div class="py-8 px-6 md:px-4 lg:px-0 xl:px-0">
           <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-medium text-dark mb-4">Browse Our Trending</h2>
           <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-medium text-primary">Receipt</h2>
         </div>
         <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
-          <el-card
+          <div
             v-for="(item, i) in trends"
             :key="`trend-${i}`"
-            :color="cardColor(item.category)"
-            :elevated="true"
+            class="p-4 lg:p-2 xl:p-2"
           >
-            <div class="relative p-6">
-              <div class="w-1/2 mb-4">
-                <img :src="item.src" :alt="`${item.title} - ${item.category}`">
+            <el-card
+              :color="cardColor(item.category)"
+              :elevated="true"
+            >
+              <div class="relative px-2 py-4">
+                <div class="w-1/2 mb-4">
+                  <img :src="item.src" :alt="`${item.title} - ${item.category}`">
+                </div>
+                <h4 class="text-3xl text-dark font-semibold mb-2">{{ item.title }}</h4>
+                <h6 class="text-primary font-medium">{{ item.category }}</h6>
               </div>
-              <h4 class="text-3xl text-dark font-semibold mb-2">{{ item.title }}</h4>
-              <h6 class="text-primary font-medium">{{ item.category }}</h6>
-            </div>
-          </el-card>
+            </el-card>
+          </div>
         </div>
       </div>
-      <div class="w-full text-center">
+      <div class="w-full text-center mt-10">
         <el-button color="primary">All Receipt</el-button>
       </div>
     </section>
@@ -196,7 +200,7 @@ export default {
         },
       ],
       carouselOffset: 0,
-      isPrevDisabled: false,
+      isNextDisabled: false,
       trends: [
         {
           title: 'Pizza Pepperoni',

@@ -1,0 +1,39 @@
+@import "../vendor/variables";
+
+.el-badge {
+  position: relative;
+
+  &.top-center,
+  &.top-left,
+  &.top-right {
+    &::after {
+      content: attr(data-badge-content);
+      position: absolute;
+      color: $light;
+      text-align: center;
+      background-color: #FF5252;
+      font-size: 12px;
+      padding: 0.2rem;
+      border-radius: 100px;
+    }
+  }
+
+  &.el-badge--green {
+
+  }
+  &.el-badge--blue {
+
+  }
+  &.el-badge--error {
+
+  }
+  &.el-badge--army {
+
+  }
+  &.el-badge--indigo {
+
+  }
+  &.el-badge--red {
+
+  }
+}
