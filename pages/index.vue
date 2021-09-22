@@ -246,7 +246,88 @@ export default {
     };
   },
   head: {
-    title: 'Elemes.id Test by Faturachman Dwi Putro',
+    title: 'Elemes.id Frontend Test - Faturachman Dwi Putro',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: `Elemes provides Online Recruiment, Online Learning and Online Assesment platform customized based on company requirement.
+        We will deliver the best platform with excellent UI/UX and scalable system.`,
+      },
+      {
+        hid: 'og:type',
+        name: 'og:type',
+        content: 'website',
+      },
+      {
+        hid: 'og:url',
+        name: 'og:url',
+        content: 'https://elemes.id',
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Elemes.id',
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: `Elemes provides Online Recruiment, Online Learning and Online Assesment platform customized based on company requirement.
+        We will deliver the best platform with excellent UI/UX and scalable system.`,
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content:
+          'https://res.cloudinary.com/rendisimamora/image/upload/v1603244771/elemes/elemes-logo-square-01.jpg',
+      },
+      {
+        hid: 'og:image:secure_url',
+        property: 'og:image:secure_url',
+        content:
+          'https://res.cloudinary.com/rendisimamora/image/upload/v1603244771/elemes/elemes-logo-square-01.jpg',
+      },
+      {
+        hid: 'og:image:alt',
+        property: 'og:image:alt',
+        content: 'Elemes.id',
+      },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        hid: 'twitter:url',
+        name: 'twitter:url',
+        content: 'https://elemes.id',
+      },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content: 'Elemes.id',
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content: `Elemes provides Online Recruiment, Online Learning and Online Assesment platform customized based on company requirement.
+        We will deliver the best platform with excellent UI/UX and scalable system.`,
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content:
+          'https://res.cloudinary.com/rendisimamora/image/upload/v1603244771/elemes/elemes-logo-square-01.jpg',
+      },
+      {
+        hid: 'twitter:image:alt',
+        name: 'twitter:image:alt',
+        content: 'Elemes.id',
+      },
+    ],
+    link: [{ rel: 'canonical', href: 'https://elemes.id' }],
   },
   computed: {
     disablePrev() {
