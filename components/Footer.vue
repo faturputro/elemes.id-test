@@ -105,6 +105,7 @@ export default {
           method: 'POST',
           data: payload,
         });
+        this.email = '';
         alert(res.data);
       } catch (e) {
         alert(e.message);
